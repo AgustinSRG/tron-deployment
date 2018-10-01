@@ -4,7 +4,7 @@
 APP="FullNode"
 PROJECT="java-tron"
 WORK_SPACE=$PWD
-NET="mainnet"
+NET="privatenet"
 BRANCH="master"
 DB="keep"
 RPC_PORT=50051
@@ -95,6 +95,9 @@ elif [ $NET == "testnet" ]; then
   wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/test_net_config.conf -O test_net_config.conf
   BRANCH="master"
   CONF_PATH=$BIN_PATH/test_net_config.conf
+elif [ $NET == "privatenet" ]; then
+  cp -rf $WORK_SPACE/private_net_config.conf $BIN_PATH/private_net_config.conf
+  CONF_PATH=$BIN_PATH/private_net_config.conf
 fi
 
 if [ -n $RPC_PORT ]; then
